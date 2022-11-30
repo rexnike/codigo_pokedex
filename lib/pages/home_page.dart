@@ -32,7 +32,7 @@ getDataPokemon() async{
   if(response.statusCode == 200){
     Map<String,dynamic> myMap = json.decode(response.body);
     //pokemons = myMap["pokemon"];
-    pokemonModel = myMap["pokemon"].map((e)=>PokemonModel.fromJson(e)).toList();
+    pokemonModel = myMap["pokemon"].map<PokemonModel>((e)=> PokemonModel.fromJson(e)).toList();
     print(PokemonModel);
     setState((){});
     //pokemons.forEach((element) {
