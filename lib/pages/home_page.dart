@@ -74,6 +74,7 @@ Widget build(BuildContext context) {
                   map((e) => ItemPokemonWidget(
                     name: e["name"],
                     image: e["img"],
+                    types: List<String>.from(e["type"].map((item)=>item)),
                   ),
                   )
                   .toList(),
