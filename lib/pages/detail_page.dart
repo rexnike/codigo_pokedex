@@ -1,3 +1,4 @@
+import 'package:codigo_pokedex/ui/widgets/item_data_widget.dart';
 import 'package:codigo_pokedex/ui/widgets/item_type_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,9 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Color(0xff49D0B0),
       appBar: AppBar(
@@ -21,6 +25,15 @@ class DetailPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
+          Positioned(
+            top: height * 0.1,
+            right: -30,
+            child: Image.asset(
+              "assets/image/pokeball.png",
+              height: 200,
+              color: Colors.white.withOpacity(0.2),
+              ),
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(
@@ -78,11 +91,48 @@ class DetailPage extends StatelessWidget {
                   ),
                  ),
                  child: Stack(
+                  clipBehavior: Clip.none,
                   children: [
+
                     //data del pokemon
-                    Text("About Pokemon"),
+                    Padding(
+                      padding: const EdgeInsets.all(22.0),
+                      child: Column(
+                        children: [
+                          const Text(
+                            "About Pokemon", 
+                            style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ItemDataWidget(
+                            title: "Height",
+                            data: "1.5 m",
+                          ),
+                          ItemDataWidget(
+                            title: "Weight", 
+                            data: "6.9 kg"),
+                          ItemDataWidget(
+                            title: "Candy", 
+                            data: "Bulbasaur Candy"),
+                          ItemDataWidget(
+                            title: "Candy Count", 
+                            data: "25"),
+                        ],
+                      ),
+                    ),
 
                     //img del pokemon
+                    Positioned.fill(
+                      top: -90.0,
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Image.network(
+                          "http://www.serebii.net/pokemongo/pokemon/001.png"
+                          ),
+                      ),
+                    ),
                   ],
                  ),
                 ),
